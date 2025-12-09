@@ -14,4 +14,5 @@ fun main() {
     inputs.forEach { dialRotator.rotate(it) }
 
     println("The password is ${dialRotator.zeros}")
+    println("There were ${dialRotator.crossings} crossings over 0")
 }

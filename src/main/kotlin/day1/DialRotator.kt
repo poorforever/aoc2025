@@ -5,6 +5,7 @@ class DialRotator(
     val regex: Regex = Regex("^([LR])(\\d+)$"),
     val range: Int = 100,
     var zeros: Int = 0,
+    var crossings: Int = 0,
 ) {
     fun rotate(input: String) {
         val (direction, step) = regex.find(input)!!.destructured
@@ -28,11 +29,13 @@ class DialRotator(
     }
 
     private fun correct(dial: Int): Int {
-        return if(dial < 0)
+        return if(dial < 0) {
+            crossings = crossings.inc()
             range + dial
-        else if (dial > 99)
+        } else if (dial > 99) {
+            crossings = crossings.inc()
             dial - range
-        else
+        } else
             dial
     }
 }
